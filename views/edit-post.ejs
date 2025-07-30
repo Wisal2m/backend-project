@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('includes/head') %>
+<body>
+    <%- include('includes/header') %>  
+    <main>
+      
+
+        <form action="/post/edit-post/<%= post.id   %>" method="POST">
+              <% if (errors && errors.length) { %>
+  <ul>
+    <% errors.forEach(function(error) { %>
+      <li style="color:red;"><%= error %></li>
+    <% }); %>
+  </ul>
+<% } %>
+        <fieldset>
+            <legend>
+                Edit existing Post
+            </legend>
+            <label for="title"><small>Title</small></label>
+            <input type="text" value="<%= post.title %>" id="title" name="title" autocomplete="off">
+            <label for="body"><small>content</small></label>
+            <textarea name="body" id="body"><%= post.body %></textarea>
+
+            <br />
+            <button>Svae  Changes</button>
+        </fieldset> 
+        </form>   
+    </main>
+    <%- include('includes/footer') %>
+</body>
+</html>
